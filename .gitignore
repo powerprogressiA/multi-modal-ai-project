@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# virtualenv
+.venv/
+venv/
+env/
+
+# local binaries
+bin/
+
+# third-party clones/large folders
+transformers/
+mne-python/
+llama.cpp/
+text-generation-webui/
+ultralytics/
+wfdb-python/
+braindecode/
+NeuroKit/
+RTKLIB/
+datasets/
+node_modules/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
