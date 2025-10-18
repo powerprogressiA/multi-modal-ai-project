@@ -1,0 +1,9 @@
+pre-commit
+black
+isort
+flake8
+mypy
+pytest
+pytest-cov
+aiohttp
+python-dotenv

@@ -1,0 +1,11 @@
+
+[bio]
+mne
+
+[cv]
+opencv-python-headless
+torch
+
+[llm]
+transformers>=4.30.0
+accelerate

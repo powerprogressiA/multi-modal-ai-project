@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/multi_modal_ai_project.egg-info/PKG-INFO
+src/multi_modal_ai_project.egg-info/SOURCES.txt
+src/multi_modal_ai_project.egg-info/dependency_links.txt
+src/multi_modal_ai_project.egg-info/requires.txt
+src/multi_modal_ai_project.egg-info/top_level.txt
+src/sensors/__init__.py
+src/sensors/simulated_sensor.py
+tests/test_smoke.py
