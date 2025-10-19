@@ -1,0 +1,35 @@
+--- Terminal on /dev/serial-esp32 | 115200 8-N-1
+--- Available filters and text transformations: colorize, debug, default, direct, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+time=216776 ms, adc34=0, v=0.000 V
+time=217777 ms, adc34=0, v=0.000 V
+time=218778 ms, adc34=0, v=0.000 V
+time=219779 ms, adc34=0, v=0.000 V
+time=220780 ms, adc34=0, v=0.000 V
+time=221781 ms, adc34=0, v=0.000 V
+time=222782 ms, adc34=0, v=0.000 V
+time=223783 ms, adc34=54, v=0.044 V
+time=224784 ms, adc34=166, v=0.134 V
+time=225785 ms, adc34=206, v=0.166 V
+time=226786 ms, adc34=240, v=0.193 V
+time=227787 ms, adc34=274, v=0.221 V
+time=228788 ms, adc34=236, v=0.190 V
+time=229789 ms, adc34=208, v=0.168 V
+time=230790 ms, adc34=177, v=0.143 V
+time=231791 ms, adc34=113, v=0.091 V
+time=232792 ms, adc34=39, v=0.031 V
+time=233793 ms, adc34=0, v=0.000 V
+time=234794 ms, adc34=0, v=0.000 V
+time=235795 ms, adc34=0, v=0.000 V
+time=236796 ms, adc34=0, v=0.000 V
+time=237797 ms, adc34=0, v=0.000 V
+time=238798 ms, adc34=0, v=0.000 V
+time=239799 ms, adc34=0, v=0.000 V
+time=240800 ms, adc34=58, v=0.047 V
+time=241801 ms, adc34=185, v=0.149 V
+time=242802 ms, adc34=226, v=0.182 V
+time=243803 ms, adc34=246, v=0.198 V
+time=244804 ms, adc34=254, v=0.205 V
+time=245805 ms, adc34=228, v=0.184 V
+time=246806 ms, adc34=156, v=0.126 V
