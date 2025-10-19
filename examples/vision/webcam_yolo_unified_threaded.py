@@ -189,6 +189,16 @@ def run_unified(args):
     # load YOLO
     model = YOLO(args.model)
 
+    # Emotiv thread init (always define emotiv_thread)
+    emotiv_thread = None
+    if args.emotiv:
+        try:
+            emotiv_thread = EEGThread(client_id=args.emotiv_client_id, client_secret=args.emotiv_client_secret, use_simulator=False)
+            emotiv_thread.start()
+        except Exception as e:
+            logging.exception('Failed to start EEGThread: %s', e)
+            emotiv_thread = None
+
     # MiDaS setup
     midas_thread = None
     midas_model = None
