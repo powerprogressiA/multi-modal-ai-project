@@ -29,6 +29,7 @@ import cv2
 import numpy as np
 import torch
 from ultralytics import YOLO
+from examples.vision.emotiv_integration import EEGThread
 
 # RealSense optional
 RS_AVAILABLE = True
@@ -244,7 +245,7 @@ def run_unified(args):
         csv_file = open(out_fn, "w", newline="")
         csv_writer = csv.writer(csv_file)
         csv_writer.writerow(["timestamp", "label", "conf", "x1", "y1", "x2", "y2", "cx", "cy",
-                             "depth_rel", "depth_m", "xyz_m", "crop_path"])
+                             "depth_rel", "depth_m", "xyz_m", "crop_path", "e_engagement", "e_stress", "e_excitement"])
 
     recent_thumbs = deque(maxlen=12)
     log_lines = deque(maxlen=8)
@@ -403,12 +404,23 @@ def run_unified(args):
                             crop_path = ""
 
                     if csv_writer:
+                        eeg = emotiv_thread.get_latest() if emotiv_thread else {}
                         csv_writer.writerow([time.time(), label_name, f"{conf:.4f}", x1, y1, x2, y2, cx, cy,
                                              depth_rel_val if depth_rel_val != "" else "",
-                                             depth_m_val, xyz_m, crop_path])
+                                             depth_m_val, xyz_m, crop_path, eeg.get("engagement",""), eeg.get("stress",""), eeg.get("excitement","")])
                         csv_file.flush()
 
                     detections_this_frame += 1
+
+            # include latest EEG metrics if available
+            eeg = emotiv_thread.get_latest() if emotiv_thread else {}
+            try:
+                e_eng = eeg.get("engagement", "")
+                e_str = eeg.get("stress", "")
+                e_exc = eeg.get("excitement", "")
+                log_lines.append(f"EEG eng={e_eng} stress={e_str} exc={e_exc}")
+            except Exception:
+                pass
 
             log_lines.append(f"Frame {frame_idx} det={detections_this_frame} t={elapsed:.1f}ms")
             panel_h = disp.shape[0]
@@ -486,6 +498,9 @@ def run_unified(args):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--emotiv", action="store_true", help="enable Emotiv Insight integration (simulator fallback)")
+    ap.add_argument("--emotiv-client-id", default="", help="Emotiv Cortex client id (optional)")
+    ap.add_argument("--emotiv-client-secret", default="", help="Emotiv Cortex client secret (optional)")
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--model", default="yolov8n")
     ap.add_argument("--camera", type=int, default=0)
